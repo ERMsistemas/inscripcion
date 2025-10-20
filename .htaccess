@@ -1,0 +1,19 @@
+# Permitir que esta página sea cargada en iframe solo desde este dominio
+Header set Content-Security-Policy "frame-ancestors https://escueladeroboticamisiones.com"
+
+# Permitir solicitudes CORS desde cualquier origen
+Header set Access-Control-Allow-Origin "*"
+
+# Políticas de permisos (para cosas como autofocus en iframe)
+Header set Permissions-Policy "autoplay=(self), fullscreen=(self), camera=*, microphone=*, display-capture=*, geolocation=*, magnetometer=*, accelerometer=*, gyroscope=*, payment=*, usb=*, midi=*, focus-without-user-activation=(self)"
+
+# Otras cabeceras útiles para seguridad
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "ALLOW-FROM https://escueladeroboticamisiones.com"
+Header always set Referrer-Policy "no-referrer-when-downgrade"
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
